@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333; /* Add a background color for the header */
+        padding: 10px 20px; /* Add padding to the header */
+      }
+
+      .header .navbar {
+        display: flex;
+        list-style: none; /* Remove default list styles */
+        margin: 0;
+        padding: 0;
+        justify-content: flex-end; /* Move the navbar to the right */
+      }
+
+      .header .navbar a {
+        font-size: 1.30rem; 
+        color: #fff;
+        text-decoration: none;
+        margin: 0 20px; 
+      }
+
+      .header .navbar a:hover {
+        color: #00bfff;
+        text-decoration: underline;
+      }
+
+      .header .fa-bars {
+        color: #fff;
+        cursor: pointer;
+        font-size: 2rem;
+        display: none;
+      }
+
+      .header .logo i {
+        padding: 0.5rem;
+      } 
+      
+      .container {
+        margin-top: 80px; /* Adjusted for the fixed header */
+        padding: 20px;
+      }
+
+      .favorites-container {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      .favorites-title {
+        color: #333;
+      }
+
+      .product-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      .product-table th, .product-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+
+      .product-table th {
+        background-color: #f2f2f2;
+        color: #333;
+      }
+
+      .remove-from-favorites-button {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .remove-from-favorites-button:hover {
+        background-color: #c82333;
+      }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="fas fa-bars"></div>
+        <nav class="navbar">     
+            <a href="{{ url_for('admin_home', email=email) }}">Home</a>
+            <a href="{{ url_for('add_jobs', email=email) }}">Add Job</a>
+            <a href="{{ url_for('appliedjobs', email=email) }}">Evaluate Postings</a>
+            <a href="{{ url_for('evaluate_forms', email=email) }}">Evaluate Forms</a>
+            <a href="{{ url_for('logout', email=email) }}">Logout</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="favorites-container">
+            <p style="color: green;">{{ msg }}</p>
+            <h2 class="favorites-title">Applied Jobs</h2>
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Email</th>
+                        <th>Cover Letter</th>
+                        <th>CV</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <td>{{ item[1] }}</td> 
+                            <td>{{ item[0] }}</td>  
+                            <td>{{ item[2] }}</td>
+                            <td>
+                                <a href="{{ url_for('download_cv', filename=item[3]) }}" target="_blank">Download CV</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

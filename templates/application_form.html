@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Job Application Form</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #3c4446;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1a1a1a;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="{{ url_for('submitapplication',email=email,jobid=data[0]['jobid']) }}" method="POST" enctype="multipart/form-data">
+        <label for="coverletter">Cover Letter:</label>
+        <input type="text" name="coverletter" id="coverletter" >
+    
+        <label for="cv">Upload CV:</label>
+        <input type="file" name="cv" accept=".pdf, .doc, .docx" id="cv">
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #c6e0fb; 
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333; /* Add a background color for the header */
+      padding: 10px 20px; /* Add padding to the header */
+    }
+
+    .header .navbar {
+      display: flex;
+      list-style: none; /* Remove default list styles */
+      margin: 0;
+      padding: 0;
+      justify-content: flex-end; /* Move the navbar to the right */
+    }
+
+    .header .navbar a {
+      font-size: 1.30rem; 
+      color: #fff;
+      text-decoration: none;
+      margin: 0 20px; 
+    }
+
+    .header .navbar a:hover {
+      color: #00bfff;
+      text-decoration: underline;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .contact-info {
+      text-align: center;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header class="header">
+      <div class="navbar">
+        <a href="{{ url_for('about', email=email) }}">About</a>
+        <a href="{{ url_for('postings', email=email) }}">Job Postings</a>
+        <a href="{{ url_for('favorites', email=email) }}">Favorites</a>
+        <a href="{{ url_for('form', email=email) }}">CV Consultancy & İnterview Rehearsal</a>
+        <a href="{{ url_for('contact', email=email) }}">Contact</a>
+        <a href="{{ url_for('logout', email=email) }}">Logout</a>
+      </div>
+  </header>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 contact-info">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <p class="text-center">If you have any questions or inquiries, feel free to reach out to us.</p>
+        <p class="text-center">Phone: <a href="tel:4448544">444 85 44</a></p>
+        <p class="text-center">Email: <a href="mailto:kariyerofisi@medipol.edu.tr">kariyerofisi@medipol.edu.tr</a></p>
+        <p class="text-center">Address: İstanbul Medipol Üniversitesi Günel Kampüs B2 katı A Koridoru</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Company Website</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <style>
+          
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap');
+
+        *{
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-transform: capitalize;
+            transition: all .2s linear;
+            text-decoration: none;
+        }
+
+        html{
+            font-size: 62.5%;
+        }
+
+        body{
+            overflow-x: hidden;
+        }
+
+        .heading, .clients .section-header h2, .section-head h1, .testimonials .section-header h2, .section-head-1 h4{
+            margin: 2rem;
+            padding-top: 6rem;
+            display: inline-block;
+            font-size: 3.5rem;
+            color: #002e5f;
+            position: relative;
+            letter-spacing: .2rem;
+        }
+
+        .heading::before, .heading::after, .clients .section-header h2::before, .clients .section-header h2::after, .section-head h1::before, .section-head h1::after, .testimonials .section-header h2::before, .testimonials .section-header h2::after, .section-head-1 h4::before, .section-head-1 h4::after{
+            content: '';
+            position: absolute;
+            height: 2.5rem;
+            width: 2.5rem;
+            border-top: .4rem solid #002e5f;
+            border-left: .4rem solid #002e5f;
+        }
+
+        .faq .heading::before, .faq .heading::after{
+            border-top: .4rem solid #00bfff;
+            border-left: .4rem solid #00bfff;
+        }
+
+        .heading::before, .clients .section-header h2::before, .section-head h1::before, .testimonials .section-header h2::before, .section-head-1 h4::before{
+            top: 5.8rem;
+            left: -2rem;
+        }
+
+        .heading::after, .clients .section-header h2::after, .section-head h1::after, .testimonials .section-header h2::after, .section-head-1 h4::after{
+            bottom: -.5rem;
+            right: -2rem;
+            transform: rotate(180deg);
+        }
+
+        .header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            position: fixed;
+        }
+
+        .header .logo img{
+            width: 130%;
+            height: 3rem;
+            top: 0;
+            left: 0;
+        }
+
+        .header .navbar{
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .header .navbar{
+            margin: 0 1.5rem;
+        }
+
+        .header .navbar a{
+            font-size: 2rem;
+            color: #fff;
+            margin: 0 0.5rem;
+        }
+
+        .header .navbar a:hover{
+            color: #00bfff;
+            text-decoration: underline;
+        }
+
+        .header .logo i{
+            padding: 0.5rem;
+        }
+
+        .header .fa-bars{
+            color: #fff;
+            cursor: pointer;
+            font-size: 3rem;
+            display: none;
+        }
+
+        .home{
+            min-height: 100vh;
+            width: 100vw;
+            background-image: url(../static/img1.jpg);
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column;
+            text-align: center;
+            padding: 0 1rem;
+            position: relative;
+            overflow: hidden !important;
+        }
+
+        .home h1{
+            color: #fff;
+            font-size: 5.5rem;
+        }
+
+        .home h2{
+            color: #fff;
+            font-size: 3rem;
+        }
+
+
+        .about{
+            min-height: 55vh;
+            width: 100vw;
+            top: -3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            line-height: 10rem;
+        }
+
+        .about .row{
+            line-height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 4rem;
+        }
+
+        .about .row .content{
+            text-align: center;
+        }
+
+        .about .row .content h3{
+            font-size: 3rem;
+            color: black;
+        }
+
+        .about .row .content p{
+            font-size: 2rem;
+            color: #333;
+            padding: 1rem 0;
+        }
+        .pt-5 .container .row .section-head p{
+            font-size: 2rem;
+            color: #333;
+            padding: 1rem 0;
+        }
+        .section-head{
+            margin-bottom: 60px;
+            text-align: center;
+            margin-top: -8rem;
+        }
+        .section-head p{
+            font-size: 20px;
+            line-height: 28px;
+            text-align: center;
+        }
+        .item{
+            background:#fff;
+            text-align: center;
+            padding:30px 25px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.07);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            margin-top: -2rem;
+            border:5px solid rgba(0,0,0,0.07);
+            -webkit-transition:all 0.5s ease 0s;
+            transition:all 0.5s ease 0s;
+        }
+
+        .item:hover .item,
+        .item:hover span.icon{
+            background:#fff;
+            border-radius: 10px;
+            -webkit-transition:all 0.5s ease 0s;
+            transition:all 0.5s ease 0s;
+        }
+        .item h6{
+            font-size: 2rem;
+        }
+
+        .item p{
+            font-size: 15px;
+            line-height: 26px;
+        }
+        .item h6{
+            margin-bottom: 20px;
+            color:#2f2f2f;
+        }   
+
+    </style> 
+
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo"><img src="./static/image.png" alt=""></a>
+        <div class="fas fa-bars"></div>
+        <nav class="navbar">     
+            <a href="{{ url_for('admin_home', email=email) }}">Home</a>
+            <a href="{{ url_for('add_jobs', email=email) }}">Add Job</a>
+            <a href="{{ url_for('appliedjobs', email=email) }}">Evaluate Postings</a>
+            <a href="{{ url_for('evaluate_forms', email=email) }}">Evaluate Forms</a>
+            <a href="{{ url_for('logout', email=email) }}">Logout</a>
+    </header>
+
+  <section id="home" class="home">
+      <h1>MediCareerpool Admin Page</h1>
+      <h2>Admin Controls</h2>
+  </section>
+
+</body>
+</html>

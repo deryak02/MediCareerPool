@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #c6e0fb; 
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333; /* Add a background color for the header */
+      padding: 10px 20px; /* Add padding to the header */
+    }
+
+    .header .navbar {
+      display: flex;
+      list-style: none; /* Remove default list styles */
+      margin: 0;
+      padding: 0;
+      justify-content: flex-end; /* Move the navbar to the right */
+    }
+
+    .header .navbar a {
+      font-size: 1.30rem; 
+      color: #fff;
+      text-decoration: none;
+      margin: 0 20px; 
+    }
+
+    .header .navbar a:hover {
+      color: #00bfff;
+      text-decoration: underline;
+    }
+
+    .header .fa-bars {
+      color: #fff;
+      cursor: pointer;
+      font-size: 2rem;
+      display: none;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="fas fa-bars"></div>
+        <nav class="navbar">
+          <a href="{{ url_for('about', email=email) }}">About</a>
+          <a href="{{ url_for('postings', email=email) }}">Job Postings</a>
+          <a href="{{ url_for('favorites', email=email) }}">Favorites</a>
+          <a href="{{ url_for('form', email=email) }}">CV Consultancy & İnterview Rehearsal</a>
+          <a href="{{ url_for('contact', email=email) }}">Contact</a>
+          <a href="{{ url_for('logout', email=email) }}">Logout</a>
+    </header>
+
+  <main>
+    <form id="cvForm">
+      <h2>CV Consultancy</h2>
+      <form id="cvForm">
+          <label for="cvEmail">Email:</label>
+          <input type="email" id="cvEmail" name="cvEmail" placeholder="@std.medipol.edu.tr" required>
+  
+          <label for="cvDep">Faculty/Department:</label>
+          <input type="text" id="cvDep" name="cvDep" required>
+          
+          <button type="submit">Submit</button>
+        </form>
+
+    <form id="interviewForm">
+      <h2>Interview Rehearsal</h2>
+
+        <label for="interviewEmail">Email:</label>
+        <input type="email" id="interviewEmail" name="interviewEmail" placeholder="@std.medipol.edu.tr" required>
+
+        <label for="interviewID">Student ID:</label>
+        <input type="text" id="interviewID" name="interviewID" required>
+
+        <button type="submit">Submit</button>
+      </form>
+  </main>
+
+</body>
+</html>

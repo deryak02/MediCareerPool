@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333; /* Add a background color for the header */
+      padding: 10px 20px; /* Add padding to the header */
+      }
+
+      .header .navbar {
+      display: flex;
+      list-style: none; /* Remove default list styles */
+      margin: 0;
+      padding: 0;
+      justify-content: flex-end; /* Move the navbar to the right */
+      }
+
+      .header .navbar a {
+      font-size: 1.30rem; 
+      color: #fff;
+      text-decoration: none;
+      margin: 0 20px; 
+      }
+
+      .header .navbar a:hover {
+      color: #00bfff;
+      text-decoration: underline;
+      }
+
+      .header .fa-bars {
+      color: #fff;
+      cursor: pointer;
+      font-size: 2rem;
+      display: none;
+      }
+
+
+      .header .logo i {
+        padding: 0.5rem;
+      } 
+      
+      .container {
+        margin-top: 80px; /* Adjusted for the fixed header */
+        padding: 20px;
+      }
+
+      .favorites-container {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      .favorites-title {
+        color: #333;
+      }
+
+      .product-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      .product-table th, .product-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+
+      .product-table th {
+        background-color: #f2f2f2;
+        color: #333;
+      }
+
+      .remove-from-favorites-button {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .remove-from-favorites-button:hover {
+        background-color: #c82333;
+      }
+    </style>
+</head>
+<body>
+  <header class="header">
+    <div class="fas fa-bars"></div>
+    <nav class="navbar">
+      <a href="{{ url_for('about', email=email) }}">About</a>
+      <a href="{{ url_for('postings', email=email) }}">Job Postings</a>
+      <a href="{{ url_for('favorites', email=email) }}">Favorites</a>
+      <a href="{{ url_for('form', email=email) }}">CV Consultancy & İnterview Rehearsal</a>
+      <a href="{{ url_for('contact', email=email) }}">Contact</a>
+      <a href="{{ url_for('logout', email=email) }}">Logout</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="favorites-container">
+      <p style="color: green;">{{ msg }}</p>
+      <h2 class="favorites-title">My Favorites</h2>
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th>Job Name</th>
+            <th>Salary</th>
+            <th>Location</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in data %}
+          <tr>
+            <td>{{ item[1] }}</td>
+            <td>${{ item[2] }}</td>
+            <td>{{ item[3] }}</td>
+
+            <td>
+              <form action="{{ url_for('removefromfavorites', email=email, jobid=item[0]) }}" method="POST">
+                <button class="remove-from-favorites-button action-button">Remove from Favorites</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
